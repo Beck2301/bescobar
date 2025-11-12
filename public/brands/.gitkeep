@@ -1,0 +1,13 @@
+# Brands/Logos Images Folder
+
+Sube aquí las imágenes de las marcas/logos que quieras mostrar en tu portafolio.
+
+Formato recomendado:
+- PNG con fondo transparente
+- SVG (preferible para escalabilidad)
+- Tamaño recomendado: mínimo 200x200px
+
+Las imágenes se pueden referenciar desde el código como:
+- `/brands/nombre-imagen.png`
+- `/brands/nombre-imagen.svg`
+

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Header from "./components/Header";
+import ProjectDetail from "./components/ProjectDetail";
 
 const App: React.FC = () => {
   const [lang, setLang] = useState<"es" | "en">("es");
@@ -29,15 +30,23 @@ const App: React.FC = () => {
     <Router>
       <div className="relative">
         <Header lang={lang} setLang={handleLangChange} />
-        <main>
-          <Routes>
-            <Route path="/" element={<Navigate to="/hero" replace />} />
-            <Route path="/hero" element={<Hero lang={lang}/>} />
-            <Route path="/about" element={<About lang={lang} />} />
-            <Route path="/projects" element={<Projects lang={lang} />} />
-            <Route path="/contact" element={<Contact lang={lang} />} />
-          </Routes>
-        </main>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <main className="overflow-y-scroll h-screen md:snap-y md:snap-mandatory scroll-smooth">
+                <Hero id="hero" lang={lang} />
+                <About id="about" lang={lang} />
+                <Projects lang={lang} />
+                <Contact lang={lang} />
+              </main>
+            }
+          />
+          <Route
+            path="/project/:projectId"
+            element={<ProjectDetail lang={lang} />}
+          />
+        </Routes>
       </div>
     </Router>
   );

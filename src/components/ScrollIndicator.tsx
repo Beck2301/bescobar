@@ -1,20 +1,30 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 
 interface ScrollIndicatorProps {
-  href: string;
+  sectionId: string;
   className?: string;
 }
 
-const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({ href, className = "" }) => {
+const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({ sectionId, className = "" }) => {
+  const scrollToSection = () => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <motion.div
       className={`absolute bottom-10 ${className}`}
       animate={{ y: [0, 10, 0] }}
       transition={{ repeat: Infinity, duration: 2 }}
     >
-      <a href={href} aria-label={`Scroll to ${href}`}>
+      <button
+        onClick={scrollToSection}
+        aria-label={`Scroll to ${sectionId}`}
+        className="cursor-pointer hover:opacity-70 transition-opacity"
+      >
         <svg
           className="w-6 h-6 text-gray-600 dark:text-white"
           fill="none"
@@ -24,7 +34,7 @@ const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({ href, className = "" 
         >
           <path d="M19 9l-7 7-7-7" />
         </svg>
-      </a>
+      </button>
     </motion.div>
   );
 };

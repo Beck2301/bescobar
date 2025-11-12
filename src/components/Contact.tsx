@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import AnimatedBackground from "./AnimatedBackground";
 
 const contactText = {
   es: {
@@ -59,21 +60,22 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
   return (
     <motion.section
       id="contact"
-      className="flex items-center justify-center min-h-screen bg-white dark:bg-gray-900 px-4"
+      className="relative flex items-center justify-center min-h-screen md:h-screen bg-white dark:bg-gray-900 px-4 sm:px-6 py-12 sm:py-16 md:py-0 overflow-hidden md:snap-start md:snap-always"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
       viewport={{ once: true }}
     >
-      <div className="max-w-2xl w-full text-center">
-        <h2 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">
+      <AnimatedBackground />
+      <div className="max-w-2xl w-full text-center z-10">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-3 sm:mb-4">
           {t.title}
         </h2>
-        <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+        <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 px-2">
           {t.description}
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-6 text-left">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 text-left">
           <input
             type="text"
             name="name"
@@ -81,7 +83,7 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
             value={form.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 rounded-lg border dark:bg-gray-800 dark:text-white outline-none focus:ring-2 focus:ring-orange-400"
+            className="w-full px-4 py-3 text-base sm:text-lg rounded-lg border dark:bg-gray-800 dark:text-white outline-none focus:ring-2 focus:ring-orange-400 touch-manipulation"
           />
           <input
             type="email"
@@ -90,7 +92,7 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
             value={form.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 rounded-lg border dark:bg-gray-800 dark:text-white outline-none focus:ring-2 focus:ring-orange-400"
+            className="w-full px-4 py-3 text-base sm:text-lg rounded-lg border dark:bg-gray-800 dark:text-white outline-none focus:ring-2 focus:ring-orange-400 touch-manipulation"
           />
           <textarea
             name="message"
@@ -99,12 +101,12 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
             onChange={handleChange}
             required
             rows={5}
-            className="w-full px-4 py-3 rounded-lg border dark:bg-gray-800 dark:text-white outline-none focus:ring-2 focus:ring-orange-400"
+            className="w-full px-4 py-3 text-base sm:text-lg rounded-lg border dark:bg-gray-800 dark:text-white outline-none focus:ring-2 focus:ring-orange-400 resize-none touch-manipulation"
           ></textarea>
 
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold py-3 rounded-lg shadow-md hover:opacity-90 transition-all"
+            className="w-full bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold py-3 sm:py-3.5 text-base sm:text-lg rounded-lg shadow-md hover:opacity-90 transition-all touch-manipulation"
           >
             {t.send}
           </button>

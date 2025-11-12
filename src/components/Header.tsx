@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { MdLightMode, MdOutlineLightMode } from "react-icons/md";
 
@@ -9,6 +9,8 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ lang, setLang }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
@@ -28,24 +30,47 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang }) => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const scrollToSection = (sectionId: string) => {
+    // Si estamos en una página de detalle, navegar a home primero
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 300);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+    setIsSidebarOpen(false);
+  };
+
   return (
     <>
       <header
-        className={`fixed top-0 w-full px-10 py-5 md:flex items-center justify-between ${
+        className={`fixed top-0 w-full px-4 sm:px-6 md:px-10 py-3 sm:py-4 md:py-5 md:flex items-center justify-between ${
           darkMode ? "text-white" : "text-black"
         } z-50`}
       >
-        <div className="flex items-center justify-between md:hidden">
+        <div className="flex items-center justify-between md:hidden w-full">
           <img
             src={darkMode ? "/logo_white.svg" : "/logo_black.svg"}
             alt="Logo"
-            className="mr-4"
+            className="mr-2 sm:mr-4 h-8 sm:h-10"
           />
-          <button onClick={toggleSidebar} className="z-50">
+          <button 
+            onClick={toggleSidebar} 
+            className="z-50 p-2 touch-manipulation"
+            aria-label="Toggle menu"
+          >
             {isSidebarOpen ? (
-              <FaTimes className="text-2xl" />
+              <FaTimes className="text-xl sm:text-2xl" />
             ) : (
-              <FaBars className="text-2xl" />
+              <FaBars className="text-xl sm:text-2xl" />
             )}
           </button>
         </div>
@@ -61,18 +86,20 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang }) => {
         <div
           className={`fixed z-50 flex flex-col items-end gap-2 ${
             isSidebarOpen ? "bottom-32" : "bottom-4"
-          } right-4 md:static md:bottom-4 md:right-4 md:flex-row md:items-center`}
+          } right-3 sm:right-4 md:static md:bottom-4 md:right-4 md:flex-row md:items-center`}
         >
           <button
             onClick={toggleDarkMode}
-            className="text-2xl p-2 rounded-full border border-gray-300 dark:border-gray-600 bg-white/70 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+            className="text-xl sm:text-2xl p-2 sm:p-2.5 rounded-full border border-gray-300 dark:border-gray-600 bg-white/70 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition touch-manipulation"
+            aria-label="Toggle dark mode"
           >
             {darkMode ? <MdOutlineLightMode /> : <MdLightMode />}
           </button>
 
           <button
             onClick={() => setLang(lang === "es" ? "en" : "es")}
-            className="text-sm px-3 py-1 rounded-full border border-gray-300 dark:border-gray-600 bg-white/70 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+            className="text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-gray-300 dark:border-gray-600 bg-white/70 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition touch-manipulation"
+            aria-label="Toggle language"
           >
             {lang === "es" ? "EN" : "ES"}
           </button>
@@ -97,40 +124,36 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang }) => {
         <div>
           <ul className="flex flex-col gap-4">
             <li className="py-2 text-center">
-              <Link
-                to="hero"
-                className="text-black dark:text-white block"
-                onClick={toggleSidebar}
+              <button
+                onClick={() => scrollToSection("hero")}
+                className="text-black dark:text-white block w-full text-lg py-2 touch-manipulation"
               >
                 Home
-              </Link>
+              </button>
             </li>
             <li className="py-2 text-center">
-              <Link
-                to="about"
-                className="text-black dark:text-white block"
-                onClick={toggleSidebar}
+              <button
+                onClick={() => scrollToSection("about")}
+                className="text-black dark:text-white block w-full text-lg py-2 touch-manipulation"
               >
                 About
-              </Link>
+              </button>
             </li>
             <li className="py-2 text-center">
-              <Link
-                to="projects"
-                className="text-black dark:text-white block"
-                onClick={toggleSidebar}
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="text-black dark:text-white block w-full text-lg py-2 touch-manipulation"
               >
                 Projects
-              </Link>
+              </button>
             </li>
             <li className="py-2 text-center">
-              <Link
-                to="contact"
-                className="text-black dark:text-white block"
-                onClick={toggleSidebar}
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="text-black dark:text-white block w-full text-lg py-2 touch-manipulation"
               >
                 Contact
-              </Link>
+              </button>
             </li>
           </ul>
         </div>
@@ -140,24 +163,36 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang }) => {
         <div className="pl-10">
           <ul className="flex flex-col gap-10 mt-20">
             <li className="transform -rotate-90 origin-top-left py-4 text-center">
-              <Link to="hero" className="text-black dark:text-white block">
+              <button
+                onClick={() => scrollToSection("hero")}
+                className="text-black dark:text-white block cursor-pointer hover:opacity-70 transition-opacity"
+              >
                 Home
-              </Link>
+              </button>
             </li>
             <li className="transform -rotate-90 origin-top-left py-4 text-center">
-              <Link to="about" className="text-black dark:text-white block">
+              <button
+                onClick={() => scrollToSection("about")}
+                className="text-black dark:text-white block cursor-pointer hover:opacity-70 transition-opacity"
+              >
                 About
-              </Link>
+              </button>
             </li>
             <li className="transform -rotate-90 origin-top-left py-4 text-center">
-              <Link to="projects" className="text-black dark:text-white block">
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="text-black dark:text-white block cursor-pointer hover:opacity-70 transition-opacity"
+              >
                 Projects
-              </Link>
+              </button>
             </li>
             <li className="transform -rotate-90 origin-top-left py-4 text-center">
-              <Link to="contact" className="text-black dark:text-white block">
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="text-black dark:text-white block cursor-pointer hover:opacity-70 transition-opacity"
+              >
                 Contact
-              </Link>
+              </button>
             </li>
           </ul>
         </div>

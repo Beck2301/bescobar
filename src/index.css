@@ -10,7 +10,7 @@ html {
 body {
   @apply bg-white text-black;
   @apply font-poppins;
-  @apply md:overflow-hidden overflow-x-hidden
+  @apply overflow-x-hidden
 }
 
 body.dark {
@@ -19,5 +19,30 @@ body.dark {
 
 section {
   scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: 100vh;
   height: 100vh;
+}
+
+/* Mejorar scroll en mobile - página continua */
+@media (max-width: 640px) {
+  section {
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  /* Desactivar scroll snap en mobile */
+  main {
+    scroll-snap-type: none;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+  
+  /* Mejorar touch targets */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
