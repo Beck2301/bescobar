@@ -55,7 +55,7 @@ const Projects: React.FC<ProjectsProps> = ({ lang }) => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project) => (
             <motion.div
               key={project.id}
               className="backdrop-blur-lg bg-white/30 dark:bg-white/5 border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl text-left hover:scale-[1.02] transition-transform duration-300 overflow-hidden flex flex-col"
