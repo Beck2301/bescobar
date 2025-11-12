@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import projectText from "../i18n/projects";
-import ScrollIndicator from "./ScrollIndicator";
 import AnimatedBackground from "./AnimatedBackground";
 import { projectsData } from "../data/projects";
 
@@ -113,7 +112,6 @@ const Projects: React.FC<ProjectsProps> = ({ lang }) => {
           ))}
         </div>
       </div>
-       <ScrollIndicator sectionId="contact" />
     </motion.section>
   );
 };
