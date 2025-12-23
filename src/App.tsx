@@ -34,11 +34,19 @@ const App: React.FC = () => {
           <Route
             path="/"
             element={
-              <main className="overflow-y-scroll h-screen md:snap-y md:snap-mandatory scroll-smooth">
+              <main className="overflow-hidden md:overflow-y-auto h-screen md:snap-y md:snap-mandatory scroll-smooth">
                 <Hero id="hero" lang={lang} />
                 <About id="about" lang={lang} />
                 <Projects lang={lang} />
                 <Contact lang={lang} />
+              </main>
+            }
+          />
+          <Route
+            path="/projects"
+            element={
+              <main className="pt-20">
+                <Projects lang={lang} />
               </main>
             }
           />

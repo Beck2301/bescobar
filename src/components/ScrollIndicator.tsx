@@ -16,7 +16,7 @@ const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({ sectionId, className 
 
   return (
     <motion.div
-      className={`absolute bottom-10 ${className}`}
+      className={`absolute bottom-10 hidden md:block ${className}`}
       animate={{ y: [0, 10, 0] }}
       transition={{ repeat: Infinity, duration: 2 }}
     >

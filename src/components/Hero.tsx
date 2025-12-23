@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import ScrollIndicator from "./ScrollIndicator";
 import AnimatedBackground from "./AnimatedBackground";
 
@@ -10,68 +11,103 @@ interface HeroProps {
 
 const heroText = {
   es: {
+    greeting: "Hola, soy",
     name: "Bryan Escobar",
-    role: "Desarrollador Web",
-    aboutBtn: "Sobre mí",
+    role: "Full Stack Developer",
+    tagline: "Chill & Web Dev",
+    cta: "Sobre mí"
   },
   en: {
+    greeting: "Hi, I'm",
     name: "Bryan Escobar",
-    role: "Web Developer",
-    aboutBtn: "About me",
+    role: "Full Stack Developer",
+    tagline: "Chill & Web Dev",
+    cta: "About me"
   },
 };
 
 const Hero: React.FC<HeroProps> = ({ id, lang }) => {
+  const content = heroText[lang];
+
   return (
     <motion.section
       id={id}
-      className="relative flex items-center justify-center min-h-screen md:h-screen bg-white dark:bg-gray-900 md:snap-start md:snap-always overflow-hidden py-12 md:py-0"
+      className="relative flex flex-col items-center justify-center min-h-screen bg-white dark:bg-gray-900 overflow-hidden px-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      <AnimatedBackground />
-      <div className="text-center max-w-xl px-4 sm:px-6 z-10">
-        <div className="relative mb-4 sm:mb-6 inline-block">
-          <img
-            src="/Me.png"
-            alt="Bryan Escobar"
-            className="w-32 h-32 sm:w-40 sm:h-40 md:w-52 md:h-52 object-cover rounded-full mx-auto shadow-xl z-10 relative"
-          />
-        </div>
-
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-2 px-2">
-          {heroText[lang].name}
-        </h1>
-
-        <p className="text-lg sm:text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-pink-500 dark:from-orange-300 dark:to-pink-400 mb-6 px-2">
-          {heroText[lang].role}
-        </p>
-
-        <motion.button
-          onClick={() => {
-            const element = document.getElementById("about");
-            if (element) {
-              element.scrollIntoView({ behavior: "smooth", block: "start" });
-            }
-          }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 text-base sm:text-lg text-white font-medium rounded-full bg-gradient-to-r from-orange-500 to-pink-500 shadow-lg hover:shadow-xl transition-all cursor-pointer touch-manipulation"
+      <AnimatedBackground variant="orange" />
+      
+      <div className="relative z-10 max-w-4xl w-full text-center space-y-8">
+        {/* Availability Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="inline-flex items-center px-4 py-1.5 rounded-full bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 text-gray-400 text-[10px] font-black uppercase tracking-widest mx-auto"
         >
-          {heroText[lang].aboutBtn}
-        </motion.button>
+          {content.tagline}
+        </motion.div>
+
+        {/* Portrait */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="relative mx-auto w-32 h-32 md:w-40 md:h-40"
+        >
+          <div className="w-full h-full rounded-full overflow-hidden border-2 border-gray-100 dark:border-white/10 shadow-sm transition-transform hover:scale-105 duration-500">
+            <img
+              src="/Me.png"
+              alt="Bryan Escobar"
+              className="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all duration-700"
+            />
+          </div>
+        </motion.div>
+
+        {/* Main Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="space-y-3"
+        >
+          <h1 className="text-4xl md:text-6xl font-black text-gray-900 dark:text-white uppercase tracking-tighter">
+            {content.name}
+          </h1>
+          <p className="text-lg md:text-2xl font-medium text-gray-500 dark:text-gray-400 tracking-tight">
+            {content.role}
+          </p>
+        </motion.div>
+
+        {/* Actions */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="flex flex-col items-center gap-8 pt-4"
+        >
+          <button
+            onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+            className="group flex flex-col items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 hover:text-orange-500 transition-all"
+          >
+            <span>{content.cta}</span>
+            <div className="w-[1px] h-12 bg-gray-200 dark:bg-white/20 group-hover:bg-orange-500 group-hover:h-16 transition-all duration-500" />
+          </button>
+
+          <div className="flex gap-10">
+            <a href="https://github.com/Beck2301" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+              <FaGithub size={20} />
+            </a>
+            <a href="https://www.linkedin.com/in/bryan-escobar-guevara/" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+              <FaLinkedin size={20} />
+            </a>
+          </div>
+        </motion.div>
       </div>
 
-      {/* Línea decorativa inferior */}
-      <img
-        src="/linea.svg"
-        alt="Line"
-        className="absolute md:-right-72 right-0 md:bottom-0 -bottom-52 md:w-auto w-64 opacity-70"
-      />
-
       <ScrollIndicator sectionId="about" />
-
     </motion.section>
   );
 };

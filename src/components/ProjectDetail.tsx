@@ -25,14 +25,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ lang }) => {
   }
 
   const handleBack = () => {
-    navigate("/");
-    // Scroll suave a proyectos después de un pequeño delay
-    setTimeout(() => {
-      const element = document.getElementById("projects");
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }, 300);
+    navigate("/projects");
   };
 
   return (
@@ -73,31 +66,70 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ lang }) => {
 
         {/* Header del proyecto */}
         <div className="mb-8 sm:mb-12">
-          <div className="text-5xl sm:text-6xl mb-4">{project.icon}</div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="text-5xl sm:text-6xl">{project.icon}</div>
+            {project.isPrivate && (
+              <span className="px-3 py-1 bg-orange-500/10 text-orange-500 text-[10px] font-black uppercase tracking-[0.2em] rounded-full border border-orange-500/20">
+                {lang === 'es' ? 'Proyecto Privado' : 'Private Project'}
+              </span>
+            )}
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tighter">
             {project.title[lang]}
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl leading-relaxed">
             {project.description[lang]}
           </p>
         </div>
 
-        {/* Imagen principal */}
+        {/* Imagen principal o Placeholder Privado */}
         <motion.div
-          className="mb-8 sm:mb-12 rounded-2xl overflow-hidden shadow-2xl"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
+          className="mb-12 sm:mb-16 rounded-[2.5rem] overflow-hidden border border-gray-100 dark:border-white/5 relative bg-gray-50/50 dark:bg-gray-900/50"
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
         >
-          <img
-            src={project.image}
-            alt={project.title[lang]}
-            className="w-full h-64 sm:h-96 md:h-[500px] object-cover"
-            onError={(e) => {
-              // Fallback si la imagen no existe
-              (e.target as HTMLImageElement).src = "https://via.placeholder.com/800x500?text=Project+Image";
-            }}
-          />
+          {project.isPrivate ? (
+            <div className="w-full h-64 sm:h-96 md:h-[400px] flex flex-col items-center justify-center gap-6 relative overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500/10 via-transparent to-transparent" />
+              <div className="relative z-10 scale-90 sm:scale-100">
+                <span className="text-8xl filter drop-shadow-[0_10px_30px_rgba(0,0,0,0.1)]">{project.icon}</span>
+                <div className="absolute -top-4 -right-4 w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center border-4 border-white dark:border-gray-900 shadow-lg">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                </div>
+              </div>
+              <div className="text-center relative z-10 px-6">
+                <p className="text-gray-400 dark:text-gray-500 text-[10px] font-black uppercase tracking-[0.5em] mb-4">
+                  {lang === 'es' ? 'CONTENIDO PRIVADO' : 'PRIVATE CONTENT'}
+                </p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm max-w-sm mx-auto leading-relaxed italic">
+                  {lang === 'es' 
+                    ? '"Este desarrollo técnico se encuentra bajo protección de confidencialidad."' 
+                    : '"This technical development is under confidentiality protection."'}
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div className="relative w-full h-64 sm:h-96 md:h-[450px] flex items-center justify-center overflow-hidden">
+              {/* Subtle mesh background color */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-orange-500/5 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent" />
+              
+              {/* Main Image Container - Limited height to prevent pixelation */}
+              <div className="relative z-10 w-full h-full p-8 sm:p-12 md:p-16 flex items-center justify-center">
+                <img
+                  src={project.image}
+                  alt={project.title[lang]}
+                  className="max-w-[90%] max-h-[300px] md:max-h-[340px] object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.1)] transition-transform duration-700 hover:scale-[1.03]"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "https://via.placeholder.com/800x500?text=Project+Image";
+                  }}
+                />
+              </div>
+            </div>
+          )}
         </motion.div>
 
         {/* Contenido principal */}

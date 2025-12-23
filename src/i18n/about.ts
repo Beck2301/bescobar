@@ -1,34 +1,69 @@
 type Lang = "es" | "en";
 
+interface Stat {
+  label: string;
+  value: string;
+}
+
+interface SkillGroup {
+  category: string;
+  items: string[];
+}
+
 interface AboutContent {
   title: string;
+  subtitle: string;
   description: string;
+  stats: Stat[];
+  skillGroups: SkillGroup[];
 }
 
 const aboutText: Record<Lang, AboutContent> = {
   es: {
     title: "Sobre mí",
-    description: `
-Hola, soy Bryan, desarrollador Web con experiencia en la creación de sitios web dinámicos, escalables y centrados en el usuario.
-
-Trabajo con tecnologías modernas como React, Next.js, JavaScript y TypeScript, así como herramientas de contenido como WordPress con Elementor.
-
-También desarrollo soluciones personalizadas en HubSpot CMS, integrando funcionalidades con CRM Objects y serverless functions para automatizar procesos y mejorar la experiencia digital de los usuarios.
-
-Me enfoco en construir interfaces limpias, responsivas y accesibles, siempre cuidando el rendimiento, la estructura del código y la facilidad de mantenimiento.
-    `,
+    subtitle: "Desarrollador enfocado en soluciones escalables e integraciones CRM.",
+    description: "Soy Bryan, un desarrollador apasionado por conectar el diseño con la funcionalidad técnica compleja. Mi especialidad radica en orquestar soluciones que viven entre el frontend moderno (React/Next.js) y ecosistemas de CRM como HubSpot, utilizando Serverless y APIs para automatizar procesos de negocio.",
+    stats: [
+      { label: "Años de Exp.", value: "3+" },
+      { label: "Proyectos", value: "20+" },
+    ],
+    skillGroups: [
+      {
+        category: "Frontend",
+        items: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+      },
+      {
+        category: "Backend",
+        items: ["Node.js", "Serverless", "AWS SAM", "Stripe API"],
+      },
+      {
+        category: "CRM Platforms",
+        items: ["HubSpot CMS", "CRM Objects", "API Integrations"],
+      },
+    ],
   },
   en: {
     title: "About Me",
-    description: `
-Hi, I'm Bryan, a Web developer with experience in building dynamic, scalable, and user-focused websites.
-
-I work with modern technologies like React, Next.js, JavaScript, and TypeScript, as well as content tools like WordPress with Elementor.
-
-I also develop custom solutions on HubSpot CMS, integrating functionality with CRM Objects and serverless functions to automate processes and enhance the digital experience.
-
-I focus on building clean, responsive, and accessible interfaces, always paying attention to performance, code structure, and maintainability.
-    `,
+    subtitle: "Developer focused on scalable solutions and CRM integrations.",
+    description: "I'm Bryan, a developer passionate about connecting design with complex technical functionality. My specialty lies in orchestrating solutions that live between the modern frontend (React/Next.js) and CRM ecosystems like HubSpot, using Serverless and APIs to automate business processes.",
+    stats: [
+      { label: "Years Exp.", value: "3+" },
+      { label: "Projects", value: "20+" },
+    ],
+    skillGroups: [
+      {
+        category: "Frontend",
+        items: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+      },
+      {
+        category: "Backend",
+        items: ["Node.js", "Serverless", "AWS SAM", "Stripe API"],
+      },
+      {
+        category: "CRM Platforms",
+        items: ["HubSpot CMS", "CRM Objects", "API Integrations"],
+      },
+    ],
   },
 };
 

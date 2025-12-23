@@ -3,8 +3,7 @@ const projectText = {
     title: "Proyectos",
     filters: [
       { label: "Todos", value: "all" },
-      { label: "Web", value: "web" },
-      { label: "UI/UX", value: "uiux" },
+      { label: "Front End", value: "frontend" },
       { label: "Backend", value: "backend" },
     ],
   },
@@ -12,8 +11,7 @@ const projectText = {
     title: "Projects",
     filters: [
       { label: "All", value: "all" },
-      { label: "Web", value: "web" },
-      { label: "UI/UX", value: "uiux" },
+      { label: "Front End", value: "frontend" },
       { label: "Backend", value: "backend" },
     ],
   },
