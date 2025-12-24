@@ -6,6 +6,7 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Header from "./components/Header";
 import ProjectDetail from "./components/ProjectDetail";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App: React.FC = () => {
   const [lang, setLang] = useState<"es" | "en">("es");
@@ -28,6 +29,7 @@ const App: React.FC = () => {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="relative">
         <Header lang={lang} setLang={handleLangChange} />
         <Routes>
@@ -43,14 +45,7 @@ const App: React.FC = () => {
               </main>
             }
           />
-          <Route
-            path="/projects"
-            element={
-              <main className="pt-20">
-                <Projects lang={lang} />
-              </main>
-            }
-          />
+
           <Route
             path="/project/:projectId"
             element={<ProjectDetail lang={lang} />}

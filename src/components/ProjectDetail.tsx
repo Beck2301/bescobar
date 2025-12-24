@@ -14,7 +14,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ lang }) => {
   const project = projectsData.find((p) => p.id === projectId);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     if (!project) {
       // Si el proyecto no existe, redirigir a home
       navigate("/");
@@ -27,11 +26,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ lang }) => {
 
   const handleBack = () => {
     navigate("/");
-    // Opcionalmente, esperar un poco y scrollear al id projects
+    // Esperar un poco a que el home se cargue y scrollear a projects
     setTimeout(() => {
       const element = document.getElementById("projects");
-      element?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 150);
   };
 
   return (
