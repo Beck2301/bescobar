@@ -32,7 +32,7 @@ const Hero: React.FC<HeroProps> = ({ id, lang }) => {
   return (
     <motion.section
       id={id}
-      className="relative flex flex-col items-center justify-center min-h-screen bg-white dark:bg-gray-900 overflow-hidden px-6"
+      className="relative flex flex-col items-center justify-center min-h-screen bg-transparent dark:bg-transparent overflow-hidden px-6 pt-20 md:pt-0"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}

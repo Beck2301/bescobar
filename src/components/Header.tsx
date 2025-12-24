@@ -66,28 +66,29 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang }) => {
   };
 
   const scrollToSection = (sectionId: string) => {
-    if (sectionId === "projects") {
-      navigate("/projects");
-      return;
-    }
-
-    if (location.pathname !== "/") {
-      navigate("/");
-      // Wait for navigation and DOM update
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        element?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    } else {
+    if (location.pathname === "/") {
       const element = document.getElementById(sectionId);
-      element?.scrollIntoView({ behavior: "smooth" });
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      if (sectionId === "projects") {
+        navigate("/projects");
+      } else {
+        navigate("/");
+        // Wait for navigation and DOM update
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          element?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
     }
   };
 
   return (
     <>
       {/* Top Header - Controls */}
-      <header className="fixed top-0 w-full px-6 py-4 flex items-center justify-between z-[60]">
+      <header className="fixed top-0 left-0 right-0 h-20 px-6 md:px-12 flex items-center justify-between z-[60] bg-white/80 dark:bg-black/60 backdrop-blur-xl border-b border-gray-100 dark:border-white/5 transition-all duration-300">
         <div className="flex items-center gap-4">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -154,26 +155,26 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang }) => {
       </nav>
 
       {/* Mobile Navigation - Bottom Bar */}
-      <nav className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-sm h-16 bg-white/90 dark:bg-black/30 backdrop-blur-2xl border border-gray-200 dark:border-white/10 rounded-2xl flex items-center justify-around px-2 z-50 shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
+      <nav className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-sm h-16 bg-white/90 dark:bg-black/80 backdrop-blur-2xl border border-gray-200 dark:border-white/10 rounded-2xl flex items-center justify-around px-2 z-[70] shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
         {sections.map((section) => (
           <button
             key={section.id}
             onClick={() => scrollToSection(section.id)}
-            className={`relative flex flex-col items-center justify-center w-14 h-14 rounded-xl transition-all duration-300 ${
+            className={`relative flex flex-col items-center justify-center w-full h-full rounded-xl transition-all duration-300 cursor-pointer active:scale-90 ${
               activeSection === section.id 
                 ? "text-orange-500" 
-                : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                : "text-gray-500 dark:text-gray-400"
             }`}
           >
-            <div className="text-2xl">{section.icon}</div>
+            <div className="text-2xl mb-0.5">{section.icon}</div>
             {activeSection === section.id && (
               <motion.div
-                layoutId="activeTab"
+                layoutId="activeTabMobile"
                 className="absolute -bottom-1 w-1.5 h-1.5 bg-orange-500 rounded-full"
                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />
             )}
-            <span className={`text-[9px] mt-1 font-bold uppercase tracking-tight transition-all ${
+            <span className={`text-[9px] font-bold uppercase tracking-tight ${
               activeSection === section.id ? "opacity-100" : "opacity-70"
             }`}>
               {section.label[lang].split(" ")[0]}

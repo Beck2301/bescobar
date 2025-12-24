@@ -75,7 +75,7 @@ const Contact: React.FC<ContactProps> = ({ id, lang }) => {
   return (
     <motion.section
       id={id}
-      className="relative flex items-center justify-center min-h-screen bg-white dark:bg-gray-900 px-6 py-24 overflow-hidden md:snap-start md:snap-always"
+      className="relative min-h-[100dvh] md:h-screen md:min-h-0 bg-transparent dark:bg-transparent md:snap-start md:snap-always overflow-visible flex flex-col pt-24 pb-32 md:py-24 px-6 md:justify-center"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}

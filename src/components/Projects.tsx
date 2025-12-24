@@ -6,10 +6,11 @@ import AnimatedBackground from "./AnimatedBackground";
 import { projectsData } from "../data/projects";
 
 interface ProjectsProps {
+  id?: string;
   lang: "es" | "en";
 }
 
-const Projects: React.FC<ProjectsProps> = ({ lang }) => {
+const Projects: React.FC<ProjectsProps> = ({ id, lang }) => {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const scrollRef = React.useRef<HTMLDivElement>(null);
@@ -47,8 +48,8 @@ const Projects: React.FC<ProjectsProps> = ({ lang }) => {
 
   return (
     <motion.section
-      id="projects"
-      className="relative h-screen bg-white dark:bg-gray-900 md:snap-start md:snap-always overflow-hidden flex flex-col justify-center"
+      id={id}
+      className="relative min-h-[100dvh] md:h-screen md:min-h-0 bg-transparent dark:bg-transparent md:snap-start md:snap-always overflow-visible flex flex-col pt-24 pb-20"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -146,7 +147,7 @@ const Projects: React.FC<ProjectsProps> = ({ lang }) => {
         <div 
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex overflow-x-auto gap-8 px-6 md:px-20 lg:px-32 pb-10 scrollbar-hide snap-x snap-mandatory scroll-smooth touch-pan-x"
+          className="flex overflow-x-auto overflow-y-hidden gap-8 px-6 md:px-20 lg:px-32 pb-10 scrollbar-hide snap-x snap-mandatory scroll-smooth touch-pan-x"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {filteredProjects.map((project) => (

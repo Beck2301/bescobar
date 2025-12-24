@@ -34,11 +34,12 @@ const App: React.FC = () => {
           <Route
             path="/"
             element={
-              <main className="overflow-hidden md:overflow-y-auto h-screen md:snap-y md:snap-mandatory scroll-smooth">
+              <main className="h-auto md:h-screen overflow-visible md:overflow-y-auto md:snap-y md:snap-mandatory scroll-smooth overflow-x-hidden">
                 <Hero id="hero" lang={lang} />
                 <About id="about" lang={lang} />
-                <Projects lang={lang} />
-                <Contact lang={lang} />
+                <Projects id="projects" lang={lang} />
+                <Contact id="contact" lang={lang} />
+                <div className="h-20 md:hidden" /> {/* Final bottom spacer */}
               </main>
             }
           />

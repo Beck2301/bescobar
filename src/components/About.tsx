@@ -15,7 +15,7 @@ const About: React.FC<AboutProps> = ({ id, lang }) => {
   return (
     <motion.section
       id={id}
-      className="relative flex items-center justify-center min-h-screen bg-white dark:bg-gray-900 px-6 py-20 overflow-hidden md:snap-start md:snap-always"
+      className="relative min-h-[100dvh] md:h-screen md:min-h-0 bg-transparent dark:bg-transparent py-24 md:py-0 flex flex-col items-center justify-start md:justify-center md:snap-start md:snap-always px-6"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -104,7 +104,6 @@ const About: React.FC<AboutProps> = ({ id, lang }) => {
           </div>
         </div>
       </div>
-
       <ScrollIndicator sectionId="projects" />
     </motion.section>
   );

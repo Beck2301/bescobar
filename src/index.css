@@ -21,35 +21,29 @@ section {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   min-height: 100vh;
-  height: 100vh;
 }
 
-/* Mejorar scroll en mobile - secciones con 100vh */
+/* Mejorar scroll en mobile */
 @media (max-width: 640px) {
-  /* Restaurar altura de secciones en mobile */
   section {
-    scroll-snap-align: none !important;
-    scroll-snap-stop: normal !important;
     min-height: 100vh !important;
-    height: 100vh !important;
+    height: auto !important;
   }
-  
-  /* Desactivar scroll snap en mobile pero mantener altura */
+
   main {
-    scroll-snap-type: none !important;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-y: auto;
-    height: 100vh;
-    overflow-y: auto;
-    scroll-behavior: smooth;
+    height: auto;
+    overflow-y: visible;
   }
-  
+
   /* Mejorar touch targets */
-  button, a {
+  button,
+  a {
     min-height: 44px;
     min-width: 44px;
   }
-  
+
   /* Asegurar que el header no bloquee contenido */
   header {
     position: fixed;
@@ -58,26 +52,27 @@ section {
     right: 0;
     z-index: 50;
   }
-  
+
   /* Mejorar el scroll y evitar problemas de altura */
-  html, body {
+  html,
+  body {
     height: 100%;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
   }
-  
+
   body {
     position: relative;
   }
-  
+
   /* Ocultar scrollbar horizontal pero permitir scroll */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
-  
+
 }
