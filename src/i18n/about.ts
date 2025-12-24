@@ -24,7 +24,7 @@ const aboutText: Record<Lang, AboutContent> = {
     subtitle: "Desarrollador enfocado en soluciones escalables e integraciones CRM.",
     description: "Soy Bryan, un desarrollador apasionado por conectar el diseño con la funcionalidad técnica compleja. Mi especialidad radica en orquestar soluciones que viven entre el frontend moderno (React/Next.js) y ecosistemas de CRM como HubSpot, utilizando Serverless y APIs para automatizar procesos de negocio.",
     stats: [
-      { label: "Años de Exp.", value: "3+" },
+      { label: "Años de Exp.", value: "4+" },
       { label: "Proyectos", value: "20+" },
     ],
     skillGroups: [
@@ -47,7 +47,7 @@ const aboutText: Record<Lang, AboutContent> = {
     subtitle: "Developer focused on scalable solutions and CRM integrations.",
     description: "I'm Bryan, a developer passionate about connecting design with complex technical functionality. My specialty lies in orchestrating solutions that live between the modern frontend (React/Next.js) and CRM ecosystems like HubSpot, using Serverless and APIs to automate business processes.",
     stats: [
-      { label: "Years Exp.", value: "3+" },
+      { label: "Years Exp.", value: "4+" },
       { label: "Projects", value: "20+" },
     ],
     skillGroups: [
