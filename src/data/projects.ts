@@ -7,6 +7,7 @@ export interface Project {
   isPrivate?: boolean;
   icon: string;
   image: string;
+  featuredImage?: string;
   images?: string[];
   technologies: string[];
   url?: string;

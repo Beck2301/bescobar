@@ -127,7 +127,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ lang }) => {
               {/* Main Image Container - Limited height to prevent pixelation */}
               <div className="relative z-10 w-full h-full p-8 sm:p-12 md:p-16 flex items-center justify-center">
                 <img
-                  src={project.image}
+                  src={project.featuredImage || project.image}
                   alt={project.title[lang]}
                   className="max-w-[90%] max-h-[300px] md:max-h-[340px] object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.1)] transition-transform duration-700 hover:scale-[1.03]"
                   onError={(e) => {
