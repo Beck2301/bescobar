@@ -14,14 +14,14 @@ const heroText = {
     greeting: "Hola, soy",
     name: "Bryan Escobar",
     role: "Full Stack Developer",
-    tagline: "Chill & Web Dev",
+    tagline: "Tuner & Web Dev",
     cta: "Sobre mí"
   },
   en: {
     greeting: "Hi, I'm",
     name: "Bryan Escobar",
     role: "Full Stack Developer",
-    tagline: "Chill & Web Dev",
+    tagline: "Tuner & Web Dev",
     cta: "About me"
   },
 };

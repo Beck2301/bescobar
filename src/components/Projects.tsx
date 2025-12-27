@@ -62,7 +62,7 @@ const Projects: React.FC<ProjectsProps> = ({ id, lang }) => {
           {projectText[lang].title}
         </h2>
         
-        <div className="flex items-center justify-between">
+        <div className="flex items-center gap-5  justify-between">
           <div className="w-full lg:w-auto">
             {/* Desktop Filters (Chips) */}
             <div className="hidden md:flex flex-wrap gap-2 items-center">
@@ -125,16 +125,16 @@ const Projects: React.FC<ProjectsProps> = ({ id, lang }) => {
             </div>
           </div>
           
-          <div className="hidden lg:flex gap-3">
+          <div className="flex gap-3">
             <button 
               onClick={() => scrollTo('left')}
-              className="p-2.5 rounded-full border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white hover:bg-orange-500 hover:text-white transition-all shadow-sm"
+              className="p-2.5 rounded-full border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white hover:bg-orange-500 hover:text-white transition-all shadow-sm active:scale-90"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
             </button>
             <button 
               onClick={() => scrollTo('right')}
-              className="p-2.5 rounded-full border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white hover:bg-orange-500 hover:text-white transition-all shadow-sm"
+              className="p-2.5 rounded-full border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white hover:bg-orange-500 hover:text-white transition-all shadow-sm active:scale-90"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
             </button>
@@ -147,7 +147,7 @@ const Projects: React.FC<ProjectsProps> = ({ id, lang }) => {
         <div 
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex overflow-x-auto overflow-y-hidden gap-8 px-6 md:px-20 lg:px-32 pb-10 scrollbar-hide snap-x snap-mandatory scroll-smooth touch-pan-x"
+          className="flex overflow-hidden gap-8 px-6 md:px-20 lg:px-32 pb-10 scrollbar-hide snap-x snap-mandatory scroll-smooth"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {filteredProjects.map((project) => (

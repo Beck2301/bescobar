@@ -45,7 +45,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ lang }) => {
     >
       <AnimatedBackground />
       
-      <div className="relative z-20 container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20 pb-20">
+      <div className="relative z-20 container mx-auto px-4 sm:px-6 pt-32 pb-40 sm:py-20 md:py-24">
         {/* Botón de regreso */}
         <motion.button
           onClick={handleBack}
