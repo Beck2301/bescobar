@@ -115,6 +115,7 @@ export const projectsData: Project[] = [
     category: "frontend",
     icon: "🍋",
     image: "/brands/lemon.png",
+    featuredImage: "/featured.png",
     images: [
       "/brands/lemon.png",
     ],
