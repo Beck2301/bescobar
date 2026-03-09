@@ -21,8 +21,8 @@ interface AboutContent {
 const aboutText: Record<Lang, AboutContent> = {
   es: {
     title: "Sobre mí",
-    subtitle: "Desarrollador enfocado en soluciones escalables e integraciones CRM.",
-    description: "Soy Bryan, un desarrollador apasionado por conectar el diseño con la funcionalidad técnica compleja. Mi especialidad radica en orquestar soluciones que viven entre el frontend moderno (React/Next.js) y ecosistemas de CRM como HubSpot, utilizando Serverless y APIs para automatizar procesos de negocio.",
+    subtitle: "Desarrollador Full Stack enfocado en construir aplicaciones y soluciones web escalables.",
+    description: "Soy Bryan, un desarrollador apasionado por conectar el diseño visual con un excelente rendimiento técnico. Me especializo en ecosistemas modernos (React/Next.js) acompañados de arquitecturas backend robustas (Node.js/Serverless), creando y automatizando experiencias digitales eficientes que transforman ideas en productos reales.",
     stats: [
       { label: "Años de Exp.", value: "4+" },
       { label: "Proyectos", value: "20+" },
@@ -44,8 +44,8 @@ const aboutText: Record<Lang, AboutContent> = {
   },
   en: {
     title: "About Me",
-    subtitle: "Developer focused on scalable solutions and CRM integrations.",
-    description: "I'm Bryan, a developer passionate about connecting design with complex technical functionality. My specialty lies in orchestrating solutions that live between the modern frontend (React/Next.js) and CRM ecosystems like HubSpot, using Serverless and APIs to automate business processes.",
+    subtitle: "Full Stack Developer focused on building scalable applications and web solutions.",
+    description: "I'm Bryan, a developer passionate about connecting visual design with excellent technical performance. I specialize in modern ecosystems (React/Next.js) coupled with robust backend architectures (Node.js/Serverless), creating and automating efficient digital experiences that transform ideas into real products.",
     stats: [
       { label: "Years Exp.", value: "4+" },
       { label: "Projects", value: "20+" },

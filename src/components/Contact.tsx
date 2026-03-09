@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMail, HiOutlineCheckCircle, HiOutlineExclamationCircle } from "react-icons/hi";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaDownload } from "react-icons/fa";
 import AnimatedBackground from "./AnimatedBackground";
 
 const contactText = {
@@ -17,7 +17,8 @@ const contactText = {
     success: "¡Mensaje enviado! Te contactaré pronto.",
     error: "Ocurrió un error. Inténtalo de nuevo.",
     socialsTitle: "Redes sociales",
-    emailTitle: "Email directo"
+    emailTitle: "Email directo",
+    downloadCv: "Descargar CV"
   },
   en: {
     title: "Contact",
@@ -31,7 +32,8 @@ const contactText = {
     success: "Message sent! I'll be in touch soon.",
     error: "Something went wrong. Please try again.",
     socialsTitle: "Social Media",
-    emailTitle: "Direct Email"
+    emailTitle: "Direct Email",
+    downloadCv: "Download CV"
   },
 };
 
@@ -121,6 +123,18 @@ const Contact: React.FC<ContactProps> = ({ id, lang }) => {
                     <FaLinkedin size={20} />
                   </a>
                 </div>
+              </div>
+
+              {/* Download CV */}
+              <div className="pt-4">
+                <a
+                  href="/CV_Bryan_Escobar.pdf"
+                  download="Bryan_Escobar_CV"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 text-gray-600 dark:text-gray-300 font-semibold text-sm hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-gray-900 transition-all"
+                >
+                  <FaDownload />
+                  {t.downloadCv}
+                </a>
               </div>
             </div>
           </div>
