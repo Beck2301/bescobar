@@ -241,7 +241,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ lang }) => {
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full px-4 py-3 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold rounded-lg text-center hover:opacity-90 transition-opacity"
+                    className="block w-full px-4 py-3 bg-orange-500 text-white font-semibold rounded-lg text-center hover:bg-orange-600 transition-colors"
                   >
                     {lang === "es" ? "Ver sitio web" : "View website"}
                   </a>
