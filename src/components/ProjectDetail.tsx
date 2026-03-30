@@ -244,7 +244,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ lang }) => {
                     className="block w-full px-4 py-3 bg-orange-500 text-white font-semibold rounded-lg text-center hover:bg-orange-600 transition-colors"
                   >
                     {project.category === "mobile" 
-                      ? (lang === "es" ? "Descargar aplicación web para Android" : "Download web app for Android")
+                      ? (lang === "es" ? "Descargar aplicación para Android" : "Download app for Android")
                       : (lang === "es" ? "Ver sitio web" : "View website")}
                   </a>
                 )}
