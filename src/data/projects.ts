@@ -17,6 +17,86 @@ export interface Project {
 
 export const projectsData: Project[] = [
   {
+    id: "food-scan-ia",
+    title: {
+      es: "Food Scan IA",
+      en: "Food Scan IA",
+    },
+    description: {
+      es: "Aplicación móvil que utiliza IA para analizar fotografías de alimentos, identificando ingredientes y emitiendo alertas dietéticas personalizadas.",
+      en: "Mobile app that uses AI to analyze food photos, identifying ingredients and issuing personalized dietary alerts.",
+    },
+    longDescription: {
+      es: "Desarrollé una aplicación móvil con React Native y Expo que se integra con el modelo de inteligencia artificial Gemini 2.5 Flash de Google. Esta herramienta permite a los usuarios tomar una fotografía de su comida y recibir un análisis instantáneo del platillo y sus posibles ingredientes. Implementé un sistema de perfiles locales donde el usuario puede registrar su dieta, alergias y síntomas actuales; la IA procesa estos datos en tiempo real para generar advertencias médicas altamente personalizadas. Mi rol abarcó el desarrollo del frontend, la integración nativa de la cámara, la gestión de almacenamiento local para el historial de escaneos y la ingeniería de prompts para optimizar las respuestas generativas.",
+      en: "I developed a mobile application using React Native and Expo that integrates Google's Gemini 2.5 Flash AI model. This app allows users to snap a picture of their meal and instantly receive an analysis of the dish and its potential ingredients. I implemented a local profile system where users can log their current diet, allergies, and symptoms; the AI processes this data in real-time to generate highly personalized medical warnings. My role spanned the entire frontend development, native camera integration, local storage management for the scan history, and prompt engineering to optimize the generative AI responses.",
+    },
+    category: "mobile",
+    icon: "🥗",
+    image: "/brands/food-scan.png",
+    images: [
+      "/brands/food-scan.png",
+    ],
+    technologies: ["React Native", "Expo", "TypeScript", "Gemini AI", "AsyncStorage"],
+    url: "https://expo.dev/artifacts/eas/jhm3TBEYBXi76Hwz3nfoux.apk",
+    github: "https://github.com/Beck2301/food-scan-ia",
+    features: {
+      es: [
+        "Escaneo visual e identificación de platillos usando la cámara del dispositivo.",
+        "Análisis rápido de ingredientes impulsado por el motor de Gemini 2.5 Flash.",
+        "Alertas médicas personalizadas cruzadas con alergias y dietas del usuario.",
+        "Historial persistente y local de escaneos usando AsyncStorage.",
+        "Interfaz de usuario moderna implementando BlurView (Glassmorphism) y gradientes dinámicos."
+      ],
+      en: [
+        "Visual food scanning and dish identification using the device camera.",
+        "Instant ingredient analysis powered by the Gemini 2.5 Flash engine.",
+        "Custom medical alerts referencing the user's specific allergies and diets.",
+        "Persistent local history of past food scans using AsyncStorage.",
+        "Modern User Interface featuring BlurView (glassmorphism) and dynamic gradients."
+      ],
+    },
+  },
+  {
+    id: "mapi",
+    title: {
+      es: "Mapi",
+      en: "Mapi",
+    },
+    description: {
+      es: "Mapa interactivo para visualizar y explorar digitalmente los recorridos del transporte colectivo de El Salvador.",
+      en: "Interactive map to digitally visualize and explore public transportation routes in El Salvador.",
+    },
+    longDescription: {
+      es: "Proyecto conceptual para transformar datos oficiales del VMT en una aplicación interactiva enfocada en la experiencia del usuario (UX) para el ciudadano. Desarrollé todo desde cero: integré de forma eficiente múltiples coordenadas GIS (GeoJSON) usando algoritmos de renderizado para mapas dinámicos. En el frontend, construí una interfaz minimalista centrada en mapas (como Uber/Google Maps) con personalización de temas (oscuro, claro, satélite). Resolví retos considerables de optimización al cargar cientos de trazos poligonales en la red vial sin perder fluidez ni afectar el rendimiento en teléfonos móviles.",
+      en: "Conceptual project to transform official VMT data into an interactive application focused on citizen user experience (UX). I developed everything from scratch: efficiently integrated multiple GIS coordinates (GeoJSON) using rendering algorithms for dynamic maps. On the frontend, I built a minimalist map-centric interface (similar to Uber/Google Maps) with theme customization (dark, light, satellite). I solved considerable optimization challenges when loading hundreds of polygonal traces onto the road network without losing fluidity or affecting performance on mobile devices.",
+    },
+    category: "fullstack",
+    icon: "🚌",
+    image: "/brands/mapi.png",
+    images: [
+      "/brands/mapi.png",
+    ],
+    technologies: ["Next.js", "React 19", "Tailwind CSS v4", "Postgres", "Leaflet"],
+    url: "https://mapi-app-seven.vercel.app",
+    github: "https://github.com/Beck2301/mapi-app",
+    features: {
+      es: [
+        "Renderizado masivo y dinámico de coordenadas espaciales (GeoJSON).",
+        "Seguimiento en tiempo real vía la API de Geolocalización nativa del navegador.",
+        "Buscador de rutas con renderizado de recorridos en capas dependientes: ida, regreso o completas.",
+        "Gestión de estado global para múltiples capas de mapas y preferencias visuales (Claro/Oscuro/Automático).",
+        "Diseño minimalista y responsive, enfocado 100% en el rendimiento móvil."
+      ],
+      en: [
+        "Massive and dynamic rendering of spatial coordinates (GeoJSON).",
+        "Real-time tracking via native Geolocation API in the browser.",
+        "Route search engine with interactive layer rendering: outbound, return, or full routes.",
+        "Global state management for multiple map layers and visual preferences (Light/Dark/Auto).",
+        "Minimalist and responsive design, focused 100% on mobile performance."
+      ],
+    },
+  },
+  {
     id: "mts-multiservicios",
     title: {
       es: "MTS Multiservicios",
