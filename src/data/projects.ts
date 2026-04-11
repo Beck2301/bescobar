@@ -17,6 +17,47 @@ export interface Project {
 
 export const projectsData: Project[] = [
   {
+    id: "busca-tu-placa",
+    title: {
+      es: "Busca Tu Placa",
+      en: "Busca Tu Placa",
+    },
+    description: {
+      es: "Plataforma web que conecta a personas que perdieron la placa de su vehículo con quienes la encontraron. Sin intermediarios, sin trámites, sin costo.",
+      en: "Web platform that connects people who lost their vehicle plate with those who found it. No middlemen, no paperwork, no cost.",
+    },
+    longDescription: {
+      es: "Tras experimentar lo tedioso del proceso de reposición de placas vehiculares en la región, desarrollé Busca Tu Placa: el primer directorio centralizado para reportar y localizar placas extraviadas en 22 países.\n\nA nivel técnico, la plataforma está construida con Next.js 16 y TypeScript, respaldada por PostgreSQL (Supabase). Para garantizar una adopción rápida y sin fricción, implementé autenticación passwordless (Magic Link) y geo-detección automática usando cabeceras de Vercel para filtrar el contenido según el país del usuario.\n\nEl núcleo de la aplicación es un buscador altamente tolerante a errores, impulsado por un algoritmo de normalización que procesa formatos irregulares de placas al instante. Además, integra optimización de imágenes con Cloudinary y múltiples canales de contacto seguro (WhatsApp y correo enmascarado).",
+      en: "After experiencing the tedious process of replacing vehicle license plates in the region, I developed Busca Tu Placa: the first centralized directory for reporting and locating lost plates in 22 countries.\n\nOn a technical level, the platform is built with Next.js 16 and TypeScript, backed by PostgreSQL (Supabase). To ensure fast and frictionless adoption, I implemented passwordless authentication (Magic Link) and automatic geo-detection using Vercel headers to filter content based on the user's country.\n\nThe core of the application is a highly fault-tolerant search engine, powered by a normalization algorithm that processes irregular license plate formats instantly. Additionally, it integrates image optimization with Cloudinary and multiple secure contact channels (WhatsApp and masked email).",
+    },
+    category: "fullstack",
+    icon: "🚗",
+    image: "/brands/btp.png",
+    images: [
+      "/brands/btp.png",
+    ],
+    technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "NextAuth.js", "Cloudinary", "Tailwind CSS", "Vercel"],
+    url: "https://btp-steel.vercel.app",
+    features: {
+      es: [
+        "Buscador instantáneo con normalización inteligente de formatos de placa.",
+        "Geo-detección automática del país del usuario para filtrar publicaciones relevantes.",
+        "Autenticación sin contraseñas mediante Magic Link (solo con email).",
+        "Galería interactiva de imágenes con subida optimizada vía Cloudinary.",
+        "Contacto seguro por correo enmascarado y WhatsApp directo.",
+        "Soporte para 22 países de Latinoamérica, España y Estados Unidos.",
+      ],
+      en: [
+        "Instant search engine with intelligent license plate format normalization.",
+        "Automatic country geo-detection to filter relevant listings by location.",
+        "Passwordless authentication via Magic Link (email only).",
+        "Interactive image gallery with optimized uploads via Cloudinary.",
+        "Secure contact through masked email and direct WhatsApp button.",
+        "Support for 22 countries across Latin America, Spain, and the United States.",
+      ],
+    },
+  },
+  {
     id: "food-scan-ia",
     title: {
       es: "Food Scan IA",
