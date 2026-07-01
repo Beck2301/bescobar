@@ -41,10 +41,27 @@ const Projects: React.FC<ProjectsProps> = ({ id, lang }) => {
 
   const scrollTo = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
       const scrollAmount = direction === 'left' ? -450 : 450;
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      
+      // Infinite wrap-around logic
+      if (direction === 'right' && scrollLeft + clientWidth >= scrollWidth - 50) {
+        scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+      } else if (direction === 'left' && scrollLeft <= 50) {
+        scrollRef.current.scrollTo({ left: scrollWidth, behavior: 'smooth' });
+      } else {
+        scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
     }
   };
+
+  // Auto-play effect to make the slider infinitely cycle
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      scrollTo('right');
+    }, 4000); // Auto-scroll every 4 seconds
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <motion.section
@@ -147,7 +164,7 @@ const Projects: React.FC<ProjectsProps> = ({ id, lang }) => {
         <div 
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex overflow-hidden gap-8 px-6 md:px-20 lg:px-32 pb-10 scrollbar-hide snap-x snap-mandatory scroll-smooth"
+          className="flex overflow-x-auto gap-8 px-6 md:px-20 lg:px-32 pb-10 scrollbar-hide snap-x snap-mandatory scroll-smooth"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {filteredProjects.map((project) => (

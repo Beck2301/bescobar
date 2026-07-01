@@ -96,23 +96,15 @@ const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({ className = "",
           }}
         >
           {vector.id % 2 === 0 ? (
-            <svg
-              width={vector.size}
-              height={vector.size}
-              viewBox="0 0 100 100"
-              className={theme.primary}
-            >
-              <circle cx="50" cy="50" r="40" fill="currentColor" className="blur-xl" />
-            </svg>
+            <div
+              style={{ width: vector.size, height: vector.size }}
+              className={`${theme.primary.replace(/text-/g, 'bg-')} rounded-full blur-2xl md:blur-3xl`}
+            />
           ) : (
-            <svg
-              width={vector.size}
-              height={vector.size}
-              viewBox="0 0 100 100"
-              className={theme.secondary}
-            >
-              <rect x="20" y="20" width="60" height="60" fill="currentColor" className="blur-xl" />
-            </svg>
+            <div
+              style={{ width: vector.size * 0.8, height: vector.size * 0.8, margin: vector.size * 0.1 }}
+              className={`${theme.secondary.replace(/text-/g, 'bg-')} rotate-12 blur-2xl md:blur-3xl`}
+            />
           )}
         </motion.div>
       ))}
