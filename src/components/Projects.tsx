@@ -164,9 +164,17 @@ const Projects: React.FC<ProjectsProps> = ({ id, lang }) => {
         <div 
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex overflow-x-auto gap-8 px-6 md:px-20 lg:px-32 pb-10 scrollbar-hide snap-x snap-mandatory scroll-smooth"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          className="flex overflow-x-auto gap-8 pb-10 scrollbar-hide snap-x snap-mandatory scroll-smooth"
+          style={{ 
+            scrollbarWidth: 'none', 
+            msOverflowStyle: 'none',
+            maskImage: 'linear-gradient(to right, transparent, black 3%, black 97%, transparent)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent, black 3%, black 97%, transparent)'
+          }}
         >
+          {/* Spacer start */}
+          <div className="flex-shrink-0 w-1 md:w-14 lg:w-24" />
+          
           {filteredProjects.map((project) => (
             <motion.div
               key={project.id}
@@ -247,6 +255,9 @@ const Projects: React.FC<ProjectsProps> = ({ id, lang }) => {
               </div>
             </motion.div>
           ))}
+          
+          {/* Spacer end */}
+          <div className="flex-shrink-0 w-1 md:w-14 lg:w-24" />
         </div>
       </div>
 
